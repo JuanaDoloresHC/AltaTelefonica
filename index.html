@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alta Telefónica</title>
+  <!--link de estilos CSS-->
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <!--link de hoja javaScript-->
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Formulario Información Alta Telefónica</h1>
+  <form action="/action_page.php" method="get">
+    <fieldset>
+      <legend>Datos Personales</legend>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" maxlength="30">
+      <br>
+      <label for="surname">Apellidos:</label>
+      <input type="text" id="surname" name="surname" maxlength="60">
+      <br>
+      <label for="address">Dirección:</label>
+      <input type="text" id="address" name="address" maxlength="60">
+      <br>
+      <label for="postcode">Código Postal:</label>
+      <input type="text" id="postcode" name="postcode" onchange="checkPostcode()"> 
+      <label id="errorMessagePostcode"></label>
+      <br>
+      <label for="location">Provincia:</label>
+      <input type="text" id="location" name="location" onchange="checkLocation()">
+      <label id="errorMessageLocation"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Tipo de Contratación</legend>
+      <input type="radio" name="radio" id="radioType" checked="checked">
+      <label for="radioType" class="typeOfContract">Nueva Contratación</label>
+
+      <input type="radio" name="radio" id="radioPortability">
+      <label for="radioPortability" class="typeOfContract">Portabilidad</label>
+
+      <input type="radio" name="radio" id="radioChange">
+      <label for="radioChange">Cambio de Contrato</label>
+      <br> <br>
+
+      Elija la compañía actual:
+      <select name="company">
+      <option value="movistar">Movistar</option>
+      <option value="orange">Orange</option>
+      <option value="vodafone">Vodafone</option>
+      <option value="yoigo">Yoigo</option>
+      <option value="ninguna">No Tengo Ninguna Compañía</option>
+      </select>
+
+      <label class="typeOfPortability">En caso de portabilidad, elija la nueva compañía</label>
+      <select name="portability">
+      <option value="movistar">Movistar</option>
+      <option value="orange">Orange</option>
+      <option value="vodafone">Vodafone</option>
+      <option value="yoigo">Yoigo</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Datos Bancarios</legend>
+      <label for="country">País:</label>
+      <input type="text" name="country" id="country" value="ES" readonly="readonly"> (sólo válido ES)
+      <br>
+      <label for="control">Control IBAN:</label>
+      <input type="text" name="control" id="control" placeholder="XX" pattern="[0-9]" maxlength="2"> (dos dígitos)
+      <br>
+      <label for="entity">Entidad:</label>
+      <input type="text" name="entity" id="entity" placeholder="XXXX" pattern="[0-9]" maxlength="4"> (cuatro dígitos)
+      <br>
+      <label for="branch">Sucursal:</label>
+      <input type="text" name="branch" id="branch" placeholder="XXXX" pattern="[0-9]" maxlength="4"> (cuatro dígitos)
+      <br>
+      <label for="dc">DC:</label>
+      <input type="text" name="dc" id="dc" placeholder="XX" pattern="[0-9]" maxlength="2"> (dos dígitos)
+      <br>
+      <label for="account">Cuenta:</label>
+      <input type="text" name="account" id="account" placeholder="XXXXXXXXXX" pattern="[0-9]" maxlength="10"> (diez dígitos)
+    </fieldset>
+
+    <fieldset>
+      <legend>Datos Estadísticos - ¿Cómo nos conoció?</legend>
+      <input type="checkbox" name="checkbox" id="checkbox">
+      <label for="checkbox">A través de la TV</label>
+      <br>
+      <input type="checkbox" name="radio" id="radioCheckbox">
+      <label for="checkbox">A través de la radio</label>
+      <br>
+      <input type="checkbox" name="internet" id="internet">
+      <label for="checkbox">A través de la Internet</label>
+      <br>
+      <input type="checkbox" name="others" id="others">
+      <label for="checkbox">Otros</label>
+      <br> <br>
+      <input type="range" id="assessment" name="assessment" min="1" max="5">Valoración [1-5]
+      <br> <br>
+      <label for="dateSurvey">Fecha de la Encuesta:</label>
+      <input type="date" id="dateSurvey" name="dateSurvey" value="2019-01-01">Valoración [1-5]
+    </fieldset>
+    <!--Botones de submit y reset-->
+    <button type="submit" class="buttonsSubmitAndReset" onsubmit="sendData()">Enviar Datos</button>
+    <button type="reset" class="buttonsSubmitAndReset">Borrar Datos</button>
+    <br>
+    <!--Botones para Mostrar Valoración,Mostrar Cuenta y Mostrar Día Semana-->
+    <button type="button" class="buttonRed" onclick="valuate()">Mostrar<br>Valoración</button> 
+    <button type="button" class="buttonRed" onclick="seeAccount()">Mostrar<br>Cuenta</button>
+    <button type="button" class="buttonRed" onclick="seeWeekday()">Mostrar Día<br>Semana</button>
+  </form>
+</body>
+</html>
